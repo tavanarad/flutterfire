@@ -1103,10 +1103,12 @@ class FirebaseAnalytics extends FirebasePluginPlatform {
     List<AnalyticsEventItem>? items,
     String? itemListId,
     String? itemListName,
+    Map<String, dynamic>? customParameters,
   }) {
     return _delegate.logEvent(
       name: 'view_item_list',
       parameters: filterOutNulls(<String, Object?>{
+        ...?customParameters,
         _ITEMS: _marshalItems(items),
         _ITEM_LIST_ID: itemListId,
         _ITEM_LIST_NAME: itemListName,
