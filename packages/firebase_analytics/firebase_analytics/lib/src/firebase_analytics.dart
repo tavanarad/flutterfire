@@ -312,12 +312,14 @@ class FirebaseAnalytics extends FirebasePluginPlatform {
     double? value,
     String? currency,
     AnalyticsCallOptions? callOptions,
+    Map<String, dynamic>? customParameters,
   }) {
     _requireValueAndCurrencyTogether(value, currency);
 
     return _delegate.logEvent(
       name: 'add_to_cart',
       parameters: filterOutNulls(<String, Object?>{
+        ...?customParameters,
         _ITEMS: _marshalItems(items),
         _VALUE: value,
         _CURRENCY: currency,
@@ -461,12 +463,14 @@ class FirebaseAnalytics extends FirebasePluginPlatform {
     List<AnalyticsEventItem>? items,
     String? coupon,
     AnalyticsCallOptions? callOptions,
+    Map<String, dynamic>? customParameters,
   }) {
     _requireValueAndCurrencyTogether(value, currency);
 
     return _delegate.logEvent(
       name: 'begin_checkout',
       parameters: filterOutNulls(<String, Object?>{
+        ...?customParameters,
         _VALUE: value,
         _CURRENCY: currency,
         _ITEMS: _marshalItems(items),
@@ -769,12 +773,14 @@ class FirebaseAnalytics extends FirebasePluginPlatform {
     String? transactionId,
     String? affiliation,
     AnalyticsCallOptions? callOptions,
+    Map<String, dynamic>? customParameters,
   }) {
     _requireValueAndCurrencyTogether(value, currency);
 
     return _delegate.logEvent(
       name: 'purchase',
       parameters: filterOutNulls(<String, Object?>{
+        ...?customParameters,
         _CURRENCY: currency,
         _COUPON: coupon,
         _VALUE: value,
@@ -892,10 +898,12 @@ class FirebaseAnalytics extends FirebasePluginPlatform {
     double? value,
     List<AnalyticsEventItem>? items,
     AnalyticsCallOptions? callOptions,
+    Map<String, dynamic>? customParameters,
   }) {
     return _delegate.logEvent(
       name: 'view_cart',
       parameters: filterOutNulls(<String, Object?>{
+        ...?customParameters,
         _CURRENCY: currency,
         _VALUE: value,
         _ITEMS: _marshalItems(items),
@@ -1080,12 +1088,14 @@ class FirebaseAnalytics extends FirebasePluginPlatform {
     String? currency,
     double? value,
     List<AnalyticsEventItem>? items,
+    Map<String, dynamic>? customParameters,
   }) {
     _requireValueAndCurrencyTogether(value, currency);
 
     return _delegate.logEvent(
       name: 'view_item',
       parameters: filterOutNulls(<String, Object?>{
+        ...?customParameters,
         _CURRENCY: currency,
         _VALUE: value,
         _ITEMS: _marshalItems(items),
